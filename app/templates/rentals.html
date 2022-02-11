@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>Available Listings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="static/assets/css/main.css"/>
+    <noscript><link rel="stylesheet" href="static/assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<a href="http://127.0.0.1:5000/ " class="logo"><strong><span>Back to Home Page</span></strong></a>
+					</header>
+
+
+<div class="wrapper">
+    <div class="top">
+        <div class="title"><h1>Available Listings</h1></div>
+    </div>
+        {% for listing in listings: %}
+            <div class="content">
+                <div class="card">
+                     <div style="width: 50%;">
+                        <div style="width: 50%; height: 300px; float: left">
+                            <img src="{{listing.picture}}" alt="MISSING JPG"/>
+                        </div>
+                        <div style="margin-left: 50%; height: 300px">
+                            <ul style="list-style-type:none">
+                                <li>{{listing.address}} <strong>|</strong> {{listing.price}} <strong>|</strong>
+                                <a href="{{listing.url }}">{{listing.url}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+</div>
+</div>
+</body>
+<footer>
+    <p>Caleb McCudden/ GitHub: CMcCudden</p>
+</footer>
+</html>
