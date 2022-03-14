@@ -27,12 +27,15 @@ header = {
         "Accept-Language": "en-US,en;q=0.9,de;q=0.8"
     }
 
-NYC = 'https://newyork.craigslist.org/search/apa?srchType=T&availabilityMode=0&sale_date=all+dates'
+CHICAGO = 'https://chicago.craigslist.org/search/apa?srchType=T&availabilityMode=0&sale_date=all+dates'
+HONOLULU = 'https://honolulu.craigslist.org/search/apa?srchType=T&availabilityMode=0&sale_date=all+dates'
+HOUSTON = 'https://houston.craigslist.org/search/apa?srchType=T&availabilityMode=0&sale_date=all+dates'
+JUNEAU = 'https://juneau.craigslist.org/search/apa?srchType=T&availabilityMode=0&sale_date=all+dates'
 LA = 'https://losangeles.craigslist.org/search/apa?srchType=T&availabilityMode=0&sale_date=all+dates'
+NASHVILLE ='https://nashville.craigslist.org/search/apa?srchType=T&availabilityMode=0&sale_date=all+dates'
+NYC = 'https://newyork.craigslist.org/search/apa?srchType=T&availabilityMode=0&sale_date=all+dates'
 PHILADELPHIA = 'https://philadelphia.craigslist.org/search/apa?srchType=T&availabilityMode=0&sale_date=all+dates'
 VEGAS = 'https://lasvegas.craigslist.org/search/apa?srchType=T&availabilityMode=0&sale_date=all+dates'
-CHICAGO = 'https://chicago.craigslist.org/search/apa?srchType=T&availabilityMode=0&sale_date=all+dates'
-HOUSTON = 'https://houston.craigslist.org/search/apa?srchType=T&availabilityMode=0&sale_date=all+dates'
 
 
 def scrape(URL):
@@ -63,18 +66,25 @@ def scrape(URL):
             now = datetime.now()
             dt_string = now.strftime("%Y-%m-%d")
 
-            if URL == NYC:
-                city = 'new_york'
-            elif URL == LA:
-                city = 'los_angeles'
-            elif URL == PHILADELPHIA:
-                city = 'philadelphia'
-            elif URL == VEGAS:
-                city = 'las_vegas'
+            if URL == CHICAGO:
+                city = 'chicago'
+            elif URL == HONOLULU:
+                city = 'honolulu'
             elif URL == HOUSTON:
                 city = 'houston'
+            elif URL == JUNEAU:
+                city = 'juneau'
+            elif URL == LA:
+                city = 'los_angeles'
+            elif URL == NASHVILLE:
+                city = 'nashville'
+            elif URL == NYC:
+                city = 'new_york'
+            elif URL == PHILADELPHIA:
+                city = 'philadelphia'
             else:
-                city = 'chicago'
+                city = 'las_vegas'
+
 
             # Make an individual SearchListing object with the above data
             search_listing = SearchListing(address=addr, price=price_int, url=link, date=dt_string, city=city, picture=pic)
@@ -94,19 +104,25 @@ def scrape(URL):
               f"city: {listing.city} picture url: {listing.picture}")
 
 
-db.delete_yesterdays_scrape()
+# db.delete_yesterdays_scrape()
+time.sleep(5)
+scrape(CHICAGO)
+time.sleep(5)
+scrape(HONOLULU)
+time.sleep(5)
+scrape(HOUSTON)
+time.sleep(5)
+scrape(JUNEAU)
+time.sleep(5)
+scrape(LA)
+time.sleep(5)
+scrape(NASHVILLE)
 time.sleep(5)
 scrape(NYC)
 time.sleep(5)
 scrape(PHILADELPHIA)
 time.sleep(5)
 scrape(VEGAS)
-time.sleep(5)
-scrape(LA)
-time.sleep(5)
-scrape(CHICAGO)
-time.sleep(5)
-scrape(HOUSTON)
 db.delete_search_listing_emptystr()
 driver.close()
 # clean up
