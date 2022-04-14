@@ -5,6 +5,6 @@ powered by Flask.
 This is a work in progress for me to make it a bit better, I intend to get it up and running live and to scrape through craigslist 
 daily to keep the listings you see current. 
 
-![alt text](app/index.png)
+![alt text](app/images/Screen Shot 2022-04-13 at 8.16.02 PM.png)
 
-![alt text](app/results.png)
+![alt text](app/images/Screen Shot 2022-04-13 at 8.16.15 PM.png)
